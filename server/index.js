@@ -27,3 +27,12 @@ app.listen(4001,()=>{
 app.use('/server/user',Userrouter)
 app.use('/server/auth',signuprouter)
 
+app.use((err,req,res,next)=>{
+    const statusCode=err.statusCode||500;
+    const message=err.message||"internal server error";
+    return res.status(statusCode).json({
+        success:false,
+        statusCode,
+        message
+    });
+});
