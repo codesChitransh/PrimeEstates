@@ -20,8 +20,8 @@ mongoose
 // })
 
 
-app.listen(4001,()=>{
-    console.log("listening at 4000")
+app.listen(4002,()=>{
+    console.log("listening at 4002")
 })
 
 app.use('/server/user',Userrouter)
