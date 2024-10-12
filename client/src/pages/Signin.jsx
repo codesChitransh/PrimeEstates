@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signINStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
-
+import Gauth from '../components/Gauth';
 function Signin() {
   const [formdata, setformdata] = useState({});
   const { loading, error } = useSelector((state => state.user));
@@ -79,6 +79,7 @@ function Signin() {
         >
           {loading ? 'Loading...' : 'Sign In'}
         </button>
+        <Gauth/>
       </form>
       
       {error && <p className="text-red-500 mt-3">{error}</p>}  {/* Display errors */}

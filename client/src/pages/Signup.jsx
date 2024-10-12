@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-
+import Gauth from '../components/Gauth';
 function Signup() {
   const [formdata, setformdata] = useState({});
   const [error, seterror] = useState(null);
@@ -83,6 +83,7 @@ function Signup() {
         >
           {loading ? 'Loading...' : 'Sign Up'}
         </button>
+        <Gauth/>
       </form>
       {error && <p className="text-red-500 mt-3">{error}</p>} 
       <div className="flex flex-col gap-2 mt-5">
