@@ -1,38 +1,46 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 import Userrouter from './routes/user.route.js';
 import signuprouter from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';  // Add cookie parser to handle cookies
+
 dotenv.config();
-const app=express();
+const app = express();
+
+// Middleware
 app.use(express.json());
+app.use(cookieParser());  // Ensure cookies are parsed
+
+// Database connection
 mongoose
-.connect(process.env.mongo)
-.then(()=>{
-    console.log("connected");
-})
-.catch((err) =>{
-    console.log(err);
-});
+    .connect(process.env.mongo, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("MongoDB connected");
+    })
+    .catch((err) => {
+        console.error("Database connection error", err);
+    });
 
-// app.get("/test",(req,res)=>{
-//     res.send("hello")
-// })
+// Routes
+app.use('/server/user', Userrouter);
+app.use('/server/auth', signuprouter);
 
-
-app.listen(4002,()=>{
-    console.log("listening at 4002")
-})
-
-app.use('/server/user',Userrouter)
-app.use('/server/auth',signuprouter)
-
-app.use((err,req,res,next)=>{
-    const statusCode=err.statusCode||500;
-    const message=err.message||"internal server error";
+// Error handling middleware
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal server error";
     return res.status(statusCode).json({
-        success:false,
+        success: false,
         statusCode,
         message
     });
+});
+
+// Listen to port
+app.listen(4002, () => {
+    console.log("Server is running on port 4002");
 });
