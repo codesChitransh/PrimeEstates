@@ -5,7 +5,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/server':{
-        target:"http://localhost:4002",
+        target:"http://localhost:4006",
         secure:false
       }
     }
