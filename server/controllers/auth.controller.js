@@ -78,3 +78,17 @@ export const google = async (req, res, next) => {
         next(error);
     }
 };
+// Sign-out controller
+export const signout = (req, res, next) => {
+    try {
+        res.clearCookie('access_token', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',  // Use secure flag in production
+            sameSite: 'strict'
+        })
+        .status(200)
+        .json({ message: 'User signed out successfully' });
+    } catch (error) {
+        next(error);  // Forward error to centralized error handler
+    }
+};
