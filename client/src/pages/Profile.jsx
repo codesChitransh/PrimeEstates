@@ -4,7 +4,7 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import { app } from '../firebase';  
 import axios from 'axios';  // Import Axios for API calls
 import { logout } from '../redux/user/userSlice'; // Import logout action from your user slice
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 function Profile() {
   const [formdata, setformdata] = useState({});  
@@ -137,12 +137,14 @@ function Profile() {
             Update
           </button>
         </div>
-
-        <div className='flex justify-between mt-5'>
+        <Link className="bg-green-600 text-white p-3 rounded-lg uppercase text-center hover:opacity-85"to="/create-listing">
+        Create Listing
+        </Link>
+        <div className='flex justify-between mt-2'>
           <span className='text-red-700 cursor-pointer' onClick={() => alert('Delete Account feature coming soon.')}>
             Delete Account
           </span>
-          <span className='text-red-700 cursor-pointer' onClick={handleSignOut}> {/* Call handleSignOut on click */}
+          <span className='text-red-700 cursor-pointer' onClick={handleSignOut}> 
             Sign Out
           </span>
         </div>
