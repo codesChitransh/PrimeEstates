@@ -46,6 +46,10 @@ const listingSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
     imageUrls: {
       type: Array,
       required: true,
