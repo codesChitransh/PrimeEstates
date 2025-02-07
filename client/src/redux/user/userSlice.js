@@ -23,11 +23,10 @@ const userSlice = createSlice({
       state.loading = false;
     },
     logout: (state) => {
-      state.currentUser = null; // Clear the currentUser on logout
+      state.currentUser = null; 
     },
   },
 });
 
-// Export actions, including the new logout action
 export const { signINStart, signInSuccess, signInFailure, logout } = userSlice.actions;
 export default userSlice.reducer;

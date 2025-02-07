@@ -59,7 +59,7 @@ function Profile() {
         },
       });
 
-      console.log("Profile updated:", response.data);
+      
       setupdateSucess(true);  // Show success message
     } catch (error) {
       console.error("Failed to update profile:", error);
@@ -75,7 +75,7 @@ function Profile() {
       });
       dispatch(logout()); // Dispatch logout action to update Redux state
       navigate('/login'); // Redirect to the login page
-      console.log('Signed out successfully');
+      
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -95,7 +95,22 @@ function Profile() {
       setShowListingsError(true);
     }
   };
-
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/server/user/delete/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
   const handleListingDelete = async (listingId) => {
     try {
       const res = await fetch(`/server/listing/delete/${listingId}`, {
@@ -177,7 +192,7 @@ function Profile() {
         Create Listing
         </Link>
         <div className='flex justify-between mt-2'>
-          <span className='text-red-700 cursor-pointer' onClick={() => alert('Delete Account feature coming soon.')}>
+          <span className='text-red-700 cursor-pointer' onClick={handleDeleteUser}>
             Delete Account
           </span>
           <span className='text-red-700 cursor-pointer' onClick={handleSignOut}> 

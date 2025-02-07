@@ -39,8 +39,8 @@ export default function ListingItem({ listing }) {
             </div>
 
             <div className='flex items-center font-semibold'>
-              <TbCurrencyDollar className='text-lg' />
-              <span className='text-xl'>
+              <p>₹</p>
+              <span className='text-sm'>
                 {listing.offer ? listing.discountPrice : listing.regularPrice}
                 {listing.type === 'rent' && '/mo'}
               </span>

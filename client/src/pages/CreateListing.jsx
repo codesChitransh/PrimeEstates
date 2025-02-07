@@ -196,7 +196,7 @@ export default function CreateListing() {
                   type='button'
                   onClick={() => setFormData({...formData, type: 'sale'})}
                   className={`flex-1 p-3 rounded-xl flex items-center justify-center gap-2 transition-colors 
-                    ₹{formData.type === 'sale' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                   ${formData.type === 'sale' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   <FaTag className='text-lg' />
                   For Sale
@@ -205,7 +205,7 @@ export default function CreateListing() {
                   type='button'
                   onClick={() => setFormData({...formData, type: 'rent'})}
                   className={`flex-1 p-3 rounded-xl flex items-center justify-center gap-2 transition-colors 
-                    ₹{formData.type === 'rent' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    ${formData.type === 'rent' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   <FaTag className='text-lg' />
                   For Rent

@@ -163,14 +163,14 @@ export default function Search() {
             <div className='flex gap-2'>
               <input
                 type='number'
-                placeholder='Min $'
+                placeholder='Min ₹'
                 value={sidebarData.minPrice}
                 onChange={(e) => handlePriceRange('minPrice', e.target.value)}
                 className='w-1/2 p-2 border rounded-lg'
               />
               <input
                 type='number'
-                placeholder='Max $'
+                placeholder='Max ₹'
                 value={sidebarData.maxPrice}
                 onChange={(e) => handlePriceRange('maxPrice', e.target.value)}
                 className='w-1/2 p-2 border rounded-lg'

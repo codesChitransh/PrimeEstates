@@ -31,7 +31,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).json({
         success: false,
         statusCode,
-        message,  // Make sure the message is passed from the error
+        message,  
     });
 });
 app.listen(4006, () => {
