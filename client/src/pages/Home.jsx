@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
 import ListingItem from '../components/ListingItem';
@@ -11,7 +11,7 @@ export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
-  SwiperCore.use([Navigation]);
+  SwiperCore.use([Navigation, Autoplay]);
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -58,10 +58,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Featured Carousel */}
+      {/* Featured Carousel with Autoplay */}
       <div className='max-w-6xl mx-auto px-4 pb-16'>
         <Swiper 
           navigation 
+          autoplay={{ delay: 3000, disableOnInteraction: false }} // Added Autoplay
+          loop={true} // Ensures smooth looping
           className='rounded-2xl shadow-xl overflow-hidden'
         >
           {offerListings.map((listing) => (

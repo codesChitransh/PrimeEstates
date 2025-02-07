@@ -3,13 +3,15 @@ import { useDispatch } from 'react-redux';
 import { signInSuccess } from '../redux/user/userSlice';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { app } from '../firebase';
-import { Navigate,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import googleLogo from '../assets/google-logo.png'; // Ensure this image is placed correctly in your project
 
 function Gauth() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-    const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const handleGoogle = async () => {
     setLoading(true);
     setError(null);
@@ -32,7 +34,7 @@ function Gauth() {
 
       const data = await res.json();
       dispatch(signInSuccess(data));
-      navigate("/");
+      navigate('/');
     } catch (error) {
       setError('Could not sign in. Please try again.');
       console.log('Could not sign in', error);
@@ -46,9 +48,10 @@ function Gauth() {
       <button
         type="button"
         onClick={handleGoogle}
-        className="bg-orange-500 text-white p-3 rounded-lg uppercase hover:opacity-95"
+        className="flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 p-3 rounded-lg uppercase hover:bg-gray-100 transition duration-300 shadow-md w-full"
         disabled={loading}
       >
+        <img src={googleLogo} alt="Google Logo" className="w-5 h-5" />
         {loading ? 'Signing in...' : 'Login with Google'}
       </button>
       {error && <p className="text-red-500 mt-2">{error}</p>}
