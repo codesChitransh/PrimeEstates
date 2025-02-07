@@ -311,7 +311,7 @@ export default function UpdateListing() {
 
             <div className='space-y-2'>
               <label className='block text-sm font-medium text-gray-700'>
-                Regular Price
+                Regular Price(₹)
                 {formData.type === 'rent' && (
                   <span className='text-gray-500 ml-1'>(per month)</span>
                 )}
@@ -330,7 +330,7 @@ export default function UpdateListing() {
             {formData.offer && (
               <div className='space-y-2'>
                 <label className='block text-sm font-medium text-gray-700'>
-                  Discounted Price
+                  Discounted Price(₹)
                   {formData.type === 'rent' && (
                     <span className='text-gray-500 ml-1'>(per month)</span>
                   )}

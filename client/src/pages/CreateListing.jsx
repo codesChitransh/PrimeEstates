@@ -196,7 +196,7 @@ export default function CreateListing() {
                   type='button'
                   onClick={() => setFormData({...formData, type: 'sale'})}
                   className={`flex-1 p-3 rounded-xl flex items-center justify-center gap-2 transition-colors 
-                    ${formData.type === 'sale' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    ₹{formData.type === 'sale' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   <FaTag className='text-lg' />
                   For Sale
@@ -205,7 +205,7 @@ export default function CreateListing() {
                   type='button'
                   onClick={() => setFormData({...formData, type: 'rent'})}
                   className={`flex-1 p-3 rounded-xl flex items-center justify-center gap-2 transition-colors 
-                    ${formData.type === 'rent' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    ₹{formData.type === 'rent' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   <FaTag className='text-lg' />
                   For Rent
@@ -300,7 +300,7 @@ export default function CreateListing() {
                 <div className='bg-gray-50 p-4 rounded-xl'>
                   <label className='block text-sm font-medium text-gray-700 mb-2'>Regular Price</label>
                   <div className='flex items-center gap-3'>
-                    <span className='text-gray-500'>$</span>
+                    <span className='text-gray-500'>₹</span>
                     <input
                       type='number'
                       id='regularPrice'
@@ -318,7 +318,7 @@ export default function CreateListing() {
                   <div className='bg-gray-50 p-4 rounded-xl'>
                     <label className='block text-sm font-medium text-gray-700 mb-2'>Discounted Price</label>
                     <div className='flex items-center gap-3'>
-                      <span className='text-gray-500'>$</span>
+                      <span className='text-gray-500'>₹</span>
                       <input
                         type='number'
                         id='discountPrice'
