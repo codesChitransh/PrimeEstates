@@ -76,7 +76,7 @@ export default function Home() {
               >
                 <div className='text-white'>
                   <h3 className='text-3xl font-bold mb-2'>{listing.name}</h3>
-                  <p className='text-lg mb-4'>${listing.offer ? listing.discountPrice : listing.regularPrice}</p>
+                  <p className='text-lg mb-4'>₹{listing.offer ? listing.discountPrice : listing.regularPrice}</p>
                   <Link
                     to={`/listing/${listing._id}`}
                     className='bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 w-fit'
