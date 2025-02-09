@@ -8,7 +8,7 @@ import router from './routes/listing.route.js';
 import path from 'path';
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 4000;
+
 app.use(express.json());
 app.use(cookieParser());  
 
@@ -43,6 +43,6 @@ app.use((err, req, res, next) => {
         message,  
     });
 });
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(4006, () => {
+    console.log("Server is running on port 4006");
 });
