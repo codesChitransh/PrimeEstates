@@ -5,7 +5,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/server':{
-        target:"https://prime-estates-backend.onrender.com",
+        target:"http://localhost:4006",
         secure:false
       }
     }
