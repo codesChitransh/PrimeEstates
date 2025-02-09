@@ -13,14 +13,16 @@ app.use(express.json());
 app.use(cookieParser());  
 
 mongoose
-    .connect(process.env.mongo, {
-    })
-    .then(() => {
-        console.log("MongoDB connected");
-    })
-    .catch((err) => {
-        console.error("Database connection error", err);
-    });
+  .connect(process.env.mongo, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("Database connection error", err);
+  });
 
     const __dirname=path.resolve();
 
