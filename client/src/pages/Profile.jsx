@@ -201,7 +201,12 @@ function Profile() {
         </div>
       </form>
       <button onClick={handleShowListings}className='text-green-600 w-full'>Show Listings</button>
-      <p className='text-red-600 mt-5'>{ShowListingsError?'Error showing Listings':''}</p>
+      {ShowListingsError && (
+  <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 mt-5 rounded-md">
+    <strong>Error:</strong> Unable to show listings. Please  <Link to="/sign-in" className="font-semibold underline">Sign In</Link> again.
+  </div>
+)}
+
       {UserListings && UserListings.length > 0 && (
         <div className='flex flex-col gap-4'>
           <h1 className='text-center mt-7 text-2xl font-semibold'>
