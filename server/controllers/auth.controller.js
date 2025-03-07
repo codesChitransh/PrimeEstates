@@ -31,7 +31,7 @@ export const signin = async (req, res, next) => {
         const validPassword = bcryptjs.compareSync(password, validUser.password);
         if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
 
-        const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
 
         const { password: pass, ...rest } = validUser._doc;  // Exclude password from response
         res.cookie('access_token', token, { httpOnly: true })
@@ -49,7 +49,7 @@ export const google = async (req, res, next) => {
 
         if (existingUser) {
             // Existing user found, generate token
-            const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
             const { password: pass, ...rest } = existingUser._doc;
             res.cookie('access_token', token, { httpOnly: true })
                 .status(200)
