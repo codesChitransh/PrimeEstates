@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signINStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
@@ -7,9 +7,15 @@ import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
 
 function Signin() {
   const [formdata, setformdata] = useState({});
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading, error, currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/home'); // Redirect when user is logged in
+    }
+  }, [currentUser, navigate]);
 
   function handleChange(e) {
     setformdata({
@@ -44,7 +50,6 @@ function Signin() {
       }
 
       dispatch(signInSuccess(data));
-      navigate('/');
     } catch (error) {
       dispatch(signInFailure('Failed to sign in'));
     }
