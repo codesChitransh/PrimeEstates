@@ -10,7 +10,7 @@ export const createListing = async (req, res, next) => {
 
     const newListing = await Listing.create({
       ...req.body,
-      userRef: req.user.id, // Ensure only logged-in users create listings
+      userRef: req.user.id, 
     });
 
     return res.status(201).json(newListing);
@@ -19,7 +19,6 @@ export const createListing = async (req, res, next) => {
   }
 };
 
-// Delete a listing
 export const deleteListing = async (req, res, next) => {
   try {
     const listing = await Listing.findById(req.params.id);
@@ -39,7 +38,6 @@ export const deleteListing = async (req, res, next) => {
   }
 };
 
-// Update a listing
 export const updateListing = async (req, res, next) => {
   try {
     const listing = await Listing.findById(req.params.id);
@@ -59,7 +57,7 @@ export const updateListing = async (req, res, next) => {
   }
 };
 
-// Get a single listing
+
 export const getListing = async (req, res, next) => {
   try {
     const listing = await Listing.findById(req.params.id);
@@ -72,7 +70,7 @@ export const getListing = async (req, res, next) => {
   }
 };
 
-// Get multiple listings with filters, search, sorting, and pagination
+
 export const getListings = async (req, res, next) => {
   try {
     const limit = isNaN(parseInt(req.query.limit)) ? 9 : parseInt(req.query.limit);
@@ -85,7 +83,7 @@ export const getListings = async (req, res, next) => {
 
     const searchTerm = req.query.searchTerm || '';
     const sortField = req.query.sort || 'createdAt';
-    const order = req.query.order === 'asc' ? 1 : -1; // Ensure sorting order is valid
+    const order = req.query.order === 'asc' ? 1 : -1; 
 
     const listings = await Listing.find({
       name: { $regex: searchTerm, $options: 'i' },
