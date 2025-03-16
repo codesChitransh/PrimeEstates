@@ -14,13 +14,13 @@ import Search from './pages/Search';
 import { useSelector } from 'react-redux';
 
 export default function App() {
-  const { currentUser } = useSelector((state) => state.user); // Check user authentication
+  const { currentUser } = useSelector((state) => state.user); 
 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* Redirect authenticated users from signin page to home */}
+        
         <Route path="/" element={currentUser ? <Navigate to="/home" /> : <Signin />} />
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
